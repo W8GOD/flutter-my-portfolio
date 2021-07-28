@@ -1,0 +1,34 @@
+[
+  {
+    "fonts": [
+      {
+        "asset": "fonts/MaterialIcons-Regular.ttf"
+      }
+    ],
+    "family": "MaterialIcons"
+  },
+  {
+    "fonts": [
+      {
+        "asset": "fonts/Product-Sans-Regular.ttf"
+      }
+    ],
+    "family": "ProductSans"
+  },
+  {
+    "fonts": [
+      {
+        "asset": "fonts/Quicksand-Bold.ttf"
+      }
+    ],
+    "family": "QuicksandBold"
+  },
+  {
+    "fonts": [
+      {
+        "asset": "fonts/Quicksand-Light.ttf"
+      }
+    ],
+    "family": "QuicksandLight"
+  }
+]
