@@ -152,7 +152,7 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Expanded(flex: 1, child: _buildContent(context)),
-                _buildIllustration(),
+                _buildImageProfile(345),
               ],
             ),
           ),
@@ -166,7 +166,6 @@ class HomePage extends StatelessWidget {
     return IntrinsicHeight(
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Expanded(
             flex: 1,
@@ -175,7 +174,9 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
-                    padding: EdgeInsets.all(30), child: _buildIllustration()),
+                  padding: EdgeInsets.zero,
+                  child: _buildImageProfile(640),
+                ),
                 _buildContent(context),
               ],
             ),
@@ -190,7 +191,6 @@ class HomePage extends StatelessWidget {
     return IntrinsicHeight(
       child: Column(
         mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.start,
         children: <Widget>[
           Expanded(
             flex: 1,
@@ -199,7 +199,9 @@ class HomePage extends StatelessWidget {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
-                    padding: EdgeInsets.all(20), child: _buildIllustration()),
+                  padding: EdgeInsets.all(10),
+                  child: _buildImageProfile(720),
+                ),
                 _buildContent(context),
               ],
             ),
@@ -216,18 +218,17 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget _buildIllustration() {
+  Widget _buildImageProfile(double imageSize) {
     return Image.network(
       Assets.profile_image,
-      height: ScreenUtil.getInstance().setWidth(345), //480.0
+      height: ScreenUtil.getInstance().setWidth(imageSize),
     );
   }
 
   Widget _buildContent(BuildContext context) {
     return Column(
-      mainAxisSize: MainAxisSize.min,
+      mainAxisSize: MainAxisSize.max,
       mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 0.0),
         _buildHello(context),
@@ -245,7 +246,7 @@ class HomePage extends StatelessWidget {
           ? MainAxisAlignment.center
           : MainAxisAlignment.start,
       children: [
-        Text(
+        SelectableText(
           Strings.hello,
           style: TextStyles.heading.copyWith(
             fontFamily: Fonts.quicksand_bold,
@@ -268,7 +269,7 @@ class HomePage extends StatelessWidget {
             text: Strings.headline,
             style: TextStyles.heading.copyWith(
               fontFamily: Fonts.quicksand_bold,
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 18.0 : 24.0,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 32.0,
             ),
           ),
         ),
@@ -282,7 +283,7 @@ class HomePage extends StatelessWidget {
                   fontFamily: Fonts.quicksand_light,
                   color: Color(Colours.color_accent),
                   fontSize:
-                      ResponsiveWidget.isSmallScreen(context) ? 26.0 : 34.0,
+                      ResponsiveWidget.isSmallScreen(context) ? 26.0 : 32.0,
                 ),
               ),
             ],
@@ -299,14 +300,14 @@ class HomePage extends StatelessWidget {
   Widget _buildPositionDescription(BuildContext context) {
     return Padding(
       padding: EdgeInsets.only(right: 40.0),
-      child: Text(
+      child: SelectableText(
         Strings.position_detail,
         textAlign: ResponsiveWidget.isSmallScreen(context)
             ? TextAlign.center
             : TextAlign.start,
         style: TextStyles.body.copyWith(
           fontFamily: Fonts.quicksand_light,
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 22.0 : 28.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 28.0,
         ),
       ),
     );
