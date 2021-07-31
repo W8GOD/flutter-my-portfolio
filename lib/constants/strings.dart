@@ -1,7 +1,7 @@
 class Strings {
   Strings._();
 
-  static const String hello = 'Hello,';
+  static const String hello = 'Hey there !,';
   static const String name = 'A.ARNON';
   static const String headline = 'I\'am';
   static const String full_name = ' Arnon Aroondech';
