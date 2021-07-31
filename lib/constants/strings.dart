@@ -3,8 +3,11 @@ class Strings {
 
   static const String hello = 'Hey there !';
   static const String name = 'A.ARNON';
-  static const String headline = 'I\'am';
+  static const String introduce = 'I\'am';
   static const String full_name = ' Arnon Aroondech';
+  static const String introduce_full_name = 'I\'am Arnon Aroondech';
+  static const String about = 'About';
+  static const String me = ' Me';
   static const String position_detail =
       'Android Developer and Designer from Bangkok, Thailand';
   static const String summary =
@@ -15,8 +18,10 @@ class Strings {
       'e-commerce work to start up environments. Extensive knowledge on '
       'the development and test of android applications. Good knowledge '
       'on android architecture and design.';
-  static const String experience = 'Experience';
-  static const String skills_i_have = 'What Skill I Have';
+  static const String education = 'Education';
+  static const String work_experience = 'Work Experience';
+  static const String technical_skills = 'Technical Skills';
+  static const String soft_skills = 'Soft Skills';
   static const String rights_reserved =
       '© 2021 ARNON AROONDECH. ALL RIGHTS RESERVED.';
 

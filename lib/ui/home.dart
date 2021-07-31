@@ -1,5 +1,3 @@
-import 'dart:html' as html;
-
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants/assets.dart';
@@ -7,11 +5,12 @@ import 'package:my_portfolio/constants/colours.dart';
 import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
-import 'package:my_portfolio/ui/about.dart';
 import 'package:my_portfolio/utils/screen/screen_util.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
 
-class HomePage extends StatelessWidget {
+import 'navigation_actions.dart';
+
+class HomePage extends NavigationActions {
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -23,104 +22,15 @@ class HomePage extends StatelessWidget {
                 horizontal: (ScreenUtil.getInstance().setWidth(108))),
         child: Scaffold(
           backgroundColor: Colors.transparent,
-          appBar: _buildAppBar(context) as PreferredSizeWidget,
-          drawer: _buildDrawer(context),
+          appBar: buildAppBar(context, enableAppBarButton: true)
+              as PreferredSizeWidget,
+          drawer: buildDrawer(context),
           body: LayoutBuilder(builder: (context, constraints) {
             return _buildBody(context, constraints);
           }),
         ),
       ),
     );
-  }
-
-  Widget _buildAppBar(BuildContext context) {
-    return AppBar(
-      titleSpacing: 0.0,
-      title: _buildTitle(),
-      backgroundColor: Colors.transparent,
-      elevation: 0.0,
-      actions: !ResponsiveWidget.isSmallScreen(context)
-          ? _buildActions(context)
-          : null,
-    );
-  }
-
-  Widget _buildTitle() {
-    return RichText(
-      text: TextSpan(
-        style: TextStyle(
-          fontSize: 14.0,
-          color: Colors.black,
-        ),
-        children: <TextSpan>[
-          TextSpan(
-            text: Strings.name,
-            style: TextStyles.logo.copyWith(
-              fontFamily: Fonts.quicksand_bold,
-              color: Color(Colours.color_accent),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  List<Widget> _buildActions(BuildContext context) {
-    return <Widget>[
-      MaterialButton(
-        child: Text(
-          Strings.menu_home,
-          style: TextStyles.menu_item.copyWith(
-            color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
-            fontSize: 16.0,
-          ),
-        ),
-        onPressed: () {},
-      ),
-      MaterialButton(
-        child: Text(
-          Strings.menu_about,
-          style: TextStyles.menu_item.copyWith(
-            color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
-            fontSize: 16.0,
-          ),
-        ),
-        onPressed: () {
-          _navigateToNextAboutPage(context);
-        },
-      ),
-      MaterialButton(
-        child: Text(
-          Strings.menu_contact,
-          style: TextStyles.menu_item.copyWith(
-            color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
-            fontSize: 16.0,
-          ),
-        ),
-        onPressed: () {},
-      ),
-    ];
-  }
-
-  void _navigateToNextAboutPage(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => AboutPage()));
-  }
-
-  Widget? _buildDrawer(BuildContext context) {
-    if (ResponsiveWidget.isSmallScreen(context)) {
-      return Drawer(
-        child: ListView(
-          padding: EdgeInsets.all(20),
-          children: _buildActions(context),
-        ),
-      );
-    } else {
-      return null;
-    }
   }
 
   Widget _buildBody(BuildContext context, BoxConstraints constraints) {
@@ -156,7 +66,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          _buildFooter(context)
+          buildFooter(context)
         ],
       ),
     );
@@ -181,7 +91,7 @@ class HomePage extends StatelessWidget {
               ],
             ),
           ),
-          _buildFooter(context)
+          buildFooter(context)
         ],
       ),
     );
@@ -207,10 +117,10 @@ class HomePage extends StatelessWidget {
             ),
           ),
           Divider(),
-          _buildCopyRightText(context),
+          buildCopyRightText(context),
           SizedBox(
               height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
-          _buildSocialIcons(),
+          buildSocialIcons(),
           SizedBox(
               height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
         ],
@@ -266,7 +176,7 @@ class HomePage extends StatelessWidget {
       children: <Widget>[
         Text.rich(
           TextSpan(
-            text: Strings.headline,
+            text: Strings.introduce,
             style: TextStyles.heading.copyWith(
               fontFamily: Fonts.quicksand_bold,
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 32.0,
@@ -310,86 +220,6 @@ class HomePage extends StatelessWidget {
           fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 28.0,
         ),
       ),
-    );
-  }
-
-  Widget _buildFooter(BuildContext context) {
-    return Column(
-      children: <Widget>[
-        Divider(),
-        Padding(
-          padding: EdgeInsets.all(12.0),
-          child: Row(
-            mainAxisSize: MainAxisSize.max,
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              Align(
-                child: _buildCopyRightText(context),
-                alignment: Alignment.centerLeft,
-              ),
-              Align(
-                child: _buildSocialIcons(),
-                alignment: Alignment.centerRight,
-              ),
-            ],
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildCopyRightText(BuildContext context) {
-    return Text(
-      Strings.rights_reserved,
-      style: TextStyles.body1.copyWith(
-        fontSize: ResponsiveWidget.isSmallScreen(context) ? 8 : 10.0,
-      ),
-    );
-  }
-
-  Widget _buildSocialIcons() {
-    return Row(
-      mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        SizedBox(width: 16.0),
-        GestureDetector(
-          onTap: () {
-            html.window.open(
-                "https://www.linkedin.com/in/arnon-aroondech", "LinkedIn");
-          },
-          child: Image.network(
-            Assets.linkedin,
-            color: Color(Colours.color_primary_dark),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        GestureDetector(
-          onTap: () {
-            html.window.open("https://medium.com/@arnona56", "Medium");
-          },
-          child: Image.network(
-            Assets.medium,
-            color: Color(Colours.color_primary_dark),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-        SizedBox(width: 16.0),
-        GestureDetector(
-          onTap: () {
-            html.window.open("https://github.com/W8GOD", "Github");
-          },
-          child: Image.network(
-            Assets.github,
-            color: Color(Colours.color_primary_dark),
-            height: 20.0,
-            width: 20.0,
-          ),
-        ),
-      ],
     );
   }
 }

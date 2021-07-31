@@ -1,8 +1,8 @@
 class Education {
   String from;
   String to;
-  String organization;
+  String university;
   String post;
 
-  Education(this.from, this.to, this.organization, this.post);
+  Education(this.from, this.to, this.university, this.post);
 }
