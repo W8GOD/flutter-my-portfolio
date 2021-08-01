@@ -129,7 +129,9 @@ class AboutPage extends NavigationActions {
         SizedBox(height: 4.0),
         _buildHeadline(context),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 24.0),
-        _buildSummary(context),
+        ResponsiveWidget.isSmallScreen(context)
+            ? _buildSummarySingleColumns(context)
+            : _buildSummaryMultipleColumns(context),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 24.0 : 48.0),
         ResponsiveWidget.isSmallScreen(context)
             ? Column(
@@ -155,7 +157,7 @@ class AboutPage extends NavigationActions {
   }
 
   Widget _buildHeadline(BuildContext context) {
-    return Text(
+    return SelectableText(
       Strings.introduce_full_name,
       style: TextStyles.body.copyWith(
         fontFamily: Fonts.quicksand_bold,
@@ -164,16 +166,44 @@ class AboutPage extends NavigationActions {
     );
   }
 
-  Widget _buildSummary(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.only(right: 80.0),
-      child: Text(
-        Strings.summary,
-        style: TextStyles.body.copyWith(
-          fontFamily: Fonts.quicksand_bold,
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
+  Widget _buildSummarySingleColumns(BuildContext context) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        _buildSummaryItem(context, Strings.summary),
+      ],
+    );
+  }
+
+  Widget _buildSummaryMultipleColumns(BuildContext context) {
+    return Row(
+      mainAxisSize: MainAxisSize.max,
+      mainAxisAlignment: MainAxisAlignment.start,
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: <Widget>[
+        Expanded(child: _buildSummaryItem(context, Strings.summary)),
+        SizedBox(
+          width: 30,
         ),
-      ),
+        Expanded(child: _buildSummaryItem(context, Strings.summaryExtra)),
+      ],
+    );
+  }
+
+  Widget _buildSummaryItem(BuildContext context, String summary) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        SelectableText(
+          summary,
+          style: TextStyles.body.copyWith(
+            fontFamily: Fonts.quicksand_bold,
+            fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
+          ),
+        ),
+      ],
     );
   }
 
@@ -216,7 +246,7 @@ class AboutPage extends NavigationActions {
   }
 
   Widget _buildEducationContainerHeading() {
-    return Text(
+    return SelectableText(
       Strings.education,
       style: TextStyles.sub_heading,
     );
@@ -235,17 +265,17 @@ class AboutPage extends NavigationActions {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Text(
+          SelectableText(
             '${education.post}',
             style: TextStyles.company,
           ),
-          Text(
+          SelectableText(
             '${education.university}',
             style: TextStyles.body.copyWith(
               color: Color(0xFF45405B),
             ),
           ),
-          Text(
+          SelectableText(
             '${education.from}-${education.to}',
             style: TextStyles.body,
           ),
@@ -266,7 +296,7 @@ class AboutPage extends NavigationActions {
   }
 
   Widget _buildWorkExperienceContainerHeading() {
-    return Text(
+    return SelectableText(
       Strings.work_experience,
       style: TextStyles.sub_heading,
     );
@@ -285,17 +315,17 @@ class AboutPage extends NavigationActions {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Text(
+          SelectableText(
             '${workExperience.post}',
             style: TextStyles.company,
           ),
-          Text(
+          SelectableText(
             '${workExperience.organization}',
             style: TextStyles.body.copyWith(
               color: Color(0xFF45405B),
             ),
           ),
-          Text(
+          SelectableText(
             '${workExperience.from}-${workExperience.to}',
             style: TextStyles.body,
           ),
@@ -377,7 +407,7 @@ class AboutPage extends NavigationActions {
 
   Widget _buildSkillChip(BuildContext context, String label) {
     return Chip(
-      label: Text(
+      label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(
           fontSize: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 11.0,
@@ -387,14 +417,14 @@ class AboutPage extends NavigationActions {
   }
 
   Widget _buildTechnicalSkillsContainerHeading() {
-    return Text(
+    return SelectableText(
       Strings.technical_skills,
       style: TextStyles.sub_heading,
     );
   }
 
   Widget _buildSoftSkillsContainerHeading() {
-    return Text(
+    return SelectableText(
       Strings.soft_skills,
       style: TextStyles.sub_heading,
     );

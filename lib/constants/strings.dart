@@ -11,13 +11,15 @@ class Strings {
   static const String position_detail =
       'Android Developer and Designer from Bangkok, Thailand';
   static const String summary =
-      'Software Development Engineer with 4+ years of experience in design, '
+      '   Software Development Engineer with 4+ years of experience in design, '
       'development and implementing mobile and client-server applications. '
-      'More than 4+ years of experience in android development. '
-      'Diverse experience ranging from mobile manufacturer to enterprise and '
-      'e-commerce work to start up environments. Extensive knowledge on '
+      'More than 4+ years of experience in android development. Diverse '
+      'experience ranging from mobile manufacturer to enterprise and '
+      'e-commerce work to start up environments. ';
+  static const String summaryExtra = 'Extensive knowledge on '
       'the development and test of android applications. Good knowledge '
       'on android architecture and design.';
+
   static const String education = 'Education';
   static const String work_experience = 'Work Experience';
   static const String technical_skills = 'Technical Skills';

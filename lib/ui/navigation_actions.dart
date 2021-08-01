@@ -141,7 +141,7 @@ abstract class NavigationActions extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         SizedBox(width: 16.0),
-        GestureDetector(
+        InkWell(
           onTap: () {
             html.window.open(
                 "https://www.linkedin.com/in/arnon-aroondech", "LinkedIn");
@@ -154,7 +154,7 @@ abstract class NavigationActions extends StatelessWidget {
           ),
         ),
         SizedBox(width: 16.0),
-        GestureDetector(
+        InkWell(
           onTap: () {
             html.window.open("https://medium.com/@arnona56", "Medium");
           },
@@ -166,7 +166,7 @@ abstract class NavigationActions extends StatelessWidget {
           ),
         ),
         SizedBox(width: 16.0),
-        GestureDetector(
+        InkWell(
           onTap: () {
             html.window.open("https://github.com/W8GOD", "Github");
           },
