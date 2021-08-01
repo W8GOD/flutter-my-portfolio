@@ -13,6 +13,7 @@ import 'navigation_actions.dart';
 class HomePage extends NavigationActions {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
       color: Color(Colours.color_snow),
       child: Padding(
@@ -21,9 +22,9 @@ class HomePage extends NavigationActions {
             : EdgeInsets.symmetric(
                 horizontal: (ScreenUtil.getInstance().setWidth(108))),
         child: Scaffold(
+          key: _drawerKey,
           backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context, enableAppBarButton: true)
-              as PreferredSizeWidget,
+          appBar: buildAppBar(context, _drawerKey) as PreferredSizeWidget,
           drawer: buildDrawer(context),
           body: LayoutBuilder(builder: (context, constraints) {
             return _buildBody(context, constraints);
@@ -130,7 +131,7 @@ class HomePage extends NavigationActions {
 
   Widget _buildImageProfile(double imageSize) {
     return Image.network(
-      Assets.profile_image,
+      Assets.ic_profile,
       height: ScreenUtil.getInstance().setWidth(imageSize),
     );
   }
@@ -209,7 +210,7 @@ class HomePage extends NavigationActions {
 
   Widget _buildPositionDescription(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 40.0),
+      padding: EdgeInsets.only(right: 30.0),
       child: SelectableText(
         Strings.position_detail,
         textAlign: ResponsiveWidget.isSmallScreen(context)
@@ -217,7 +218,7 @@ class HomePage extends NavigationActions {
             : TextAlign.start,
         style: TextStyles.body.copyWith(
           fontFamily: Fonts.quicksand_light,
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 28.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 26.0,
         ),
       ),
     );

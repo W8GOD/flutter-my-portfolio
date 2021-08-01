@@ -13,9 +13,13 @@ import 'about.dart';
 import 'home.dart';
 
 abstract class NavigationActions extends StatelessWidget {
-  Widget buildAppBar(BuildContext context, {enableAppBarButton = false}) {
+  Widget buildAppBar(
+      BuildContext context, GlobalKey<ScaffoldState> _drawerKey) {
     return AppBar(
-      automaticallyImplyLeading: enableAppBarButton,
+      automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context),
+      leading: ResponsiveWidget.isSmallScreen(context)
+          ? _buildLeadingIconButton(_drawerKey)
+          : null,
       titleSpacing: 0.0,
       title: buildTitle(),
       backgroundColor: Colors.transparent,
@@ -23,6 +27,15 @@ abstract class NavigationActions extends StatelessWidget {
       actions: !ResponsiveWidget.isSmallScreen(context)
           ? buildActions(context)
           : null,
+    );
+  }
+
+  Widget _buildLeadingIconButton(GlobalKey<ScaffoldState> _drawerKey) {
+    return IconButton(
+      icon: Icon(Icons.menu),
+      onPressed: () {
+        _drawerKey.currentState?.openDrawer();
+      },
     );
   }
 
@@ -147,7 +160,7 @@ abstract class NavigationActions extends StatelessWidget {
                 "https://www.linkedin.com/in/arnon-aroondech", "LinkedIn");
           },
           child: Image.network(
-            Assets.linkedin,
+            Assets.ic_linkedin,
             color: Color(Colours.color_primary_dark),
             height: 20.0,
             width: 20.0,
@@ -159,7 +172,7 @@ abstract class NavigationActions extends StatelessWidget {
             html.window.open("https://medium.com/@arnona56", "Medium");
           },
           child: Image.network(
-            Assets.medium,
+            Assets.ic_medium,
             color: Color(Colours.color_primary_dark),
             height: 20.0,
             width: 20.0,
@@ -171,7 +184,7 @@ abstract class NavigationActions extends StatelessWidget {
             html.window.open("https://github.com/W8GOD", "Github");
           },
           child: Image.network(
-            Assets.github,
+            Assets.ic_github,
             color: Color(Colours.color_primary_dark),
             height: 20.0,
             width: 20.0,
@@ -187,8 +200,7 @@ abstract class NavigationActions extends StatelessWidget {
   }
 
   void navigateToNextHomePage(BuildContext context) {
-    Route route = MaterialPageRoute(builder: (context) => HomePage());
     Navigator.of(context)
-        .pushAndRemoveUntil(route, (Route<dynamic> route) => false);
+        .push(MaterialPageRoute(builder: (context) => HomePage()));
   }
 }

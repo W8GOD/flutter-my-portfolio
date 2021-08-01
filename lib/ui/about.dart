@@ -13,6 +13,7 @@ import 'package:my_portfolio/widgets/responsive_widget.dart';
 class AboutPage extends NavigationActions {
   @override
   Widget build(BuildContext context) {
+    GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
       color: Color(Colours.color_snow),
       child: Padding(
@@ -21,8 +22,9 @@ class AboutPage extends NavigationActions {
             : EdgeInsets.symmetric(
                 horizontal: (ScreenUtil.getInstance().setWidth(108))),
         child: Scaffold(
+          key: _drawerKey,
           backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context) as PreferredSizeWidget,
+          appBar: buildAppBar(context, _drawerKey) as PreferredSizeWidget,
           drawer: buildDrawer(context),
           body: LayoutBuilder(builder: (context, constraints) {
             return _buildBody(context, constraints);
@@ -199,7 +201,6 @@ class AboutPage extends NavigationActions {
         SelectableText(
           summary,
           style: TextStyles.body.copyWith(
-            fontFamily: Fonts.quicksand_bold,
             fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
           ),
         ),
