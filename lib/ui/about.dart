@@ -5,6 +5,7 @@ import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/education.dart';
+import 'package:my_portfolio/models/page_type.dart';
 import 'package:my_portfolio/models/work_experience.dart';
 import 'package:my_portfolio/ui/navigation_actions.dart';
 import 'package:my_portfolio/utils/screen/screen_util.dart';
@@ -24,8 +25,9 @@ class AboutPage extends NavigationActions {
         child: Scaffold(
           key: _drawerKey,
           backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context, _drawerKey) as PreferredSizeWidget,
-          drawer: buildDrawer(context),
+          appBar: buildAppBar(context, _drawerKey, PageType.about)
+              as PreferredSizeWidget,
+          drawer: buildDrawer(context, PageType.about),
           body: LayoutBuilder(builder: (context, constraints) {
             return _buildBody(context, constraints);
           }),

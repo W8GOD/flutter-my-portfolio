@@ -7,14 +7,15 @@ import 'package:my_portfolio/constants/colours.dart';
 import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
+import 'package:my_portfolio/models/page_type.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
 
 import 'about.dart';
 import 'home.dart';
 
 abstract class NavigationActions extends StatelessWidget {
-  Widget buildAppBar(
-      BuildContext context, GlobalKey<ScaffoldState> _drawerKey) {
+  Widget buildAppBar(BuildContext context, GlobalKey<ScaffoldState> _drawerKey,
+      PageType _pageType) {
     return AppBar(
       automaticallyImplyLeading: ResponsiveWidget.isSmallScreen(context),
       leading: ResponsiveWidget.isSmallScreen(context)
@@ -25,7 +26,7 @@ abstract class NavigationActions extends StatelessWidget {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       actions: !ResponsiveWidget.isSmallScreen(context)
-          ? buildActions(context)
+          ? buildActions(context, _pageType)
           : null,
     );
   }
@@ -59,7 +60,7 @@ abstract class NavigationActions extends StatelessWidget {
     );
   }
 
-  List<Widget> buildActions(BuildContext context) {
+  List<Widget> buildActions(BuildContext context, PageType pageType) {
     return <Widget>[
       MaterialButton(
         child: Text(
@@ -71,7 +72,7 @@ abstract class NavigationActions extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          navigateToNextHomePage(context);
+          if (pageType != PageType.home) navigateToNextHomePage(context);
         },
       ),
       MaterialButton(
@@ -84,7 +85,7 @@ abstract class NavigationActions extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          navigateToNextAboutPage(context);
+          if (pageType != PageType.about) navigateToNextAboutPage(context);
         },
       ),
       MaterialButton(
@@ -101,12 +102,12 @@ abstract class NavigationActions extends StatelessWidget {
     ];
   }
 
-  Widget? buildDrawer(BuildContext context) {
+  Widget? buildDrawer(BuildContext context, PageType pageType) {
     if (ResponsiveWidget.isSmallScreen(context)) {
       return Drawer(
         child: ListView(
           padding: EdgeInsets.all(20),
-          children: buildActions(context),
+          children: buildActions(context, pageType),
         ),
       );
     } else {
