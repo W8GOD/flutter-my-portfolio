@@ -340,7 +340,7 @@ class AboutPage extends NavigationActions {
   Widget _buildTechnicalSkills(BuildContext context) {
     final List<Widget> widgets = technicalSkills
         .map((skill) => Padding(
-              padding: EdgeInsets.only(top: 8.0, right: 4.0),
+              padding: EdgeInsets.only(top: 4.0, right: 4.0),
               child: _buildSkillChip(context, skill),
             ))
         .toList();
@@ -413,7 +413,7 @@ class AboutPage extends NavigationActions {
       label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 11.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 8.0 : 10.0,
         ),
       ),
     );

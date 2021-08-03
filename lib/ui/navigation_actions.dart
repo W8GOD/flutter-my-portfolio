@@ -8,6 +8,7 @@ import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/page_type.dart';
+import 'package:my_portfolio/utils/screen/screen_util.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
 
 import 'about.dart';
@@ -33,7 +34,10 @@ abstract class NavigationActions extends StatelessWidget {
 
   Widget _buildLeadingIconButton(GlobalKey<ScaffoldState> _drawerKey) {
     return IconButton(
-      icon: Icon(Icons.menu),
+      icon: Image.network(
+        Assets.ic_menu,
+        height: ScreenUtil.getInstance().setWidth(48),
+      ),
       onPressed: () {
         _drawerKey.currentState?.openDrawer();
       },

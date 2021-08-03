@@ -3,6 +3,9 @@ class Assets {
 
   static const String ic_profile = 'assets/images/programmer.png';
 
+  // menu icon
+  static const String ic_menu = 'assets/icons/ic_menu.png';
+
   // social icons
   static const String ic_medium = 'assets/icons/ic_medium.png';
   static const String ic_github = 'assets/icons/ic_github.png';

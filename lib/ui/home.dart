@@ -211,7 +211,7 @@ class HomePage extends NavigationActions {
 
   Widget _buildPositionDescription(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(right: 30.0),
+      padding: EdgeInsets.zero,
       child: SelectableText(
         Strings.position_detail,
         textAlign: ResponsiveWidget.isSmallScreen(context)
