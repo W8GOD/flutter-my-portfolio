@@ -177,6 +177,7 @@ class AboutPage extends NavigationActions {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildSummaryItem(context, Strings.summary),
+        _buildSummaryItem(context, Strings.summaryExtra),
       ],
     );
   }

@@ -11,14 +11,16 @@ class Strings {
   static const String position_detail =
       'Android Developer and Designer from Bangkok, Thailand';
   static const String summary =
-      '   Software Development Engineer with 4+ years of experience in design, '
-      'development and implementing mobile and client-server applications. '
-      'More than 4+ years of experience in android development. Diverse '
-      'experience ranging from mobile manufacturer to enterprise and '
-      'e-commerce work to start up environments. ';
-  static const String summaryExtra = 'Extensive knowledge on '
-      'the development and test of android applications. Good knowledge '
-      'on android architecture and design.';
+      '   Expert and passionate mobile application developer specializing '
+      'in Android, Java, and Kotlin development. Over 4+ years of experience '
+      'in the IT development fields with a broad range of industries. '
+      'Solid understanding of full mobile and software development life cycles, '
+      'UX/UI, analytics, testing, and Agile methodology (Scrum).';
+
+  static const String summaryExtra =
+      '   Dedicated to continuously developing, implementing, improving, '
+      'and adopting new technologies to maximize development efficiency '
+      'and produce innovative applications.';
 
   static const String education = 'Education';
   static const String work_experience = 'Work Experience';
