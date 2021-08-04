@@ -414,7 +414,7 @@ class AboutPage extends NavigationActions {
       label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 8.0 : 10.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 10.0 : 12.0,
         ),
       ),
     );
