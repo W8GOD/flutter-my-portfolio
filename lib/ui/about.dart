@@ -173,8 +173,6 @@ class AboutPage extends NavigationActions {
   Widget _buildSummarySingleColumns(BuildContext context) {
     return Column(
       mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
-      crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         _buildSummaryItem(context, Strings.summary),
         _buildSummaryItem(context, Strings.summaryExtra),
@@ -185,7 +183,6 @@ class AboutPage extends NavigationActions {
   Widget _buildSummaryMultipleColumns(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.max,
-      mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Expanded(child: _buildSummaryItem(context, Strings.summary)),
@@ -199,10 +196,10 @@ class AboutPage extends NavigationActions {
 
   Widget _buildSummaryItem(BuildContext context, String summary) {
     return Column(
-      mainAxisSize: MainAxisSize.max,
       children: <Widget>[
         SelectableText(
           summary,
+          textAlign: TextAlign.start,
           style: TextStyles.body.copyWith(
             fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
           ),
