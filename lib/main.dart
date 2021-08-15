@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/ui/about.dart';
+import 'package:my_portfolio/ui/blog.dart';
 import 'package:my_portfolio/ui/home.dart';
 import 'package:my_portfolio/utils/screen/screen_util.dart';
 
@@ -31,6 +33,6 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     ScreenUtil.instance = ScreenUtil.getInstance()..init(context);
-    return HomePage();
+    return BlogPage();
   }
 }

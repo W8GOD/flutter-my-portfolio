@@ -32,5 +32,6 @@ class Strings {
   // menu items
   static const String menu_home = 'Home';
   static const String menu_about = 'About';
+  static const String menu_blog = 'Blog';
   static const String menu_contact = 'Contact';
 }

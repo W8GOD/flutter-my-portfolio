@@ -11,7 +11,12 @@ import 'package:my_portfolio/widgets/responsive_widget.dart';
 
 import 'navigation_actions.dart';
 
-class HomePage extends NavigationActions {
+class HomePage extends StatefulWidget {
+  @override
+  _HomePageState createState() => _HomePageState();
+}
+
+class _HomePageState extends NavigationActions {
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
@@ -25,7 +30,8 @@ class HomePage extends NavigationActions {
         child: Scaffold(
           key: _drawerKey,
           backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context, _drawerKey, PageType.home) as PreferredSizeWidget,
+          appBar: buildAppBar(context, _drawerKey, PageType.home)
+              as PreferredSizeWidget,
           drawer: buildDrawer(context, PageType.home),
           body: LayoutBuilder(builder: (context, constraints) {
             return _buildBody(context, constraints);

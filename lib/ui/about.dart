@@ -11,7 +11,12 @@ import 'package:my_portfolio/ui/navigation_actions.dart';
 import 'package:my_portfolio/utils/screen/screen_util.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
 
-class AboutPage extends NavigationActions {
+class AboutPage extends StatefulWidget {
+  @override
+  _AboutPageState createState() => _AboutPageState();
+}
+
+class _AboutPageState extends NavigationActions {
   @override
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();

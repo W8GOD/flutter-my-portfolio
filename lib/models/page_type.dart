@@ -1,4 +1,1 @@
-
-enum PageType {
-  home, about
-}
+enum PageType { home, about, blog, contact }

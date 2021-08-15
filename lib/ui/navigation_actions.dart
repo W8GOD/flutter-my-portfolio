@@ -8,13 +8,15 @@ import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/page_type.dart';
+import 'package:my_portfolio/ui/blog.dart';
 import 'package:my_portfolio/utils/screen/screen_util.dart';
 import 'package:my_portfolio/widgets/responsive_widget.dart';
 
 import 'about.dart';
+import 'blog.dart';
 import 'home.dart';
 
-abstract class NavigationActions extends StatelessWidget {
+abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
   Widget buildAppBar(BuildContext context, GlobalKey<ScaffoldState> _drawerKey,
       PageType _pageType) {
     return AppBar(
@@ -36,7 +38,7 @@ abstract class NavigationActions extends StatelessWidget {
     return IconButton(
       icon: Image.network(
         Assets.ic_menu,
-        height: ScreenUtil.getInstance().setWidth(48),
+        height: ScreenUtil.getInstance().setWidth(36),
       ),
       onPressed: () {
         _drawerKey.currentState?.openDrawer();
@@ -76,7 +78,8 @@ abstract class NavigationActions extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          if (pageType != PageType.home) navigateToNextHomePage(context);
+          if (pageType != PageType.home)
+            navigateToNextPage(context, HomePage());
         },
       ),
       MaterialButton(
@@ -89,7 +92,22 @@ abstract class NavigationActions extends StatelessWidget {
           ),
         ),
         onPressed: () {
-          if (pageType != PageType.about) navigateToNextAboutPage(context);
+          if (pageType != PageType.about)
+            navigateToNextPage(context, AboutPage());
+        },
+      ),
+      MaterialButton(
+        child: Text(
+          Strings.menu_blog,
+          style: TextStyles.menu_item.copyWith(
+            color: Color(Colours.color_accent),
+            fontFamily: Fonts.quicksand_bold,
+            fontSize: 16.0,
+          ),
+        ),
+        onPressed: () {
+          if (pageType != PageType.blog)
+            navigateToNextPage(context, BlogPage());
         },
       ),
       MaterialButton(
@@ -199,13 +217,7 @@ abstract class NavigationActions extends StatelessWidget {
     );
   }
 
-  void navigateToNextAboutPage(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => AboutPage()));
-  }
-
-  void navigateToNextHomePage(BuildContext context) {
-    Navigator.of(context)
-        .push(MaterialPageRoute(builder: (context) => HomePage()));
+  void navigateToNextPage(BuildContext context, Widget page) {
+    Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
   }
 }
