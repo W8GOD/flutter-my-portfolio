@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_html/flutter_html.dart';
+import 'package:my_portfolio/constants/assets.dart';
 import 'package:my_portfolio/constants/colours.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/utils/screen/screen_util.dart';
@@ -21,18 +22,33 @@ class WebViewPage extends StatelessWidget {
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
             : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108))),
+                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
         child: Scaffold(
           key: _drawerKey,
+          drawerEdgeDragWidth: 0.0,
           appBar: AppBar(
+            leading: _buildLeadingIconButton(context),
             backgroundColor: Colors.black,
-            title: Text(
-              title ?? "",
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyles.heading.copyWith(
-                color: Colors.white,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 16 : 20.0,
+            centerTitle: true,
+            title: Padding(
+              padding: EdgeInsets.all(8),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  Text(
+                    title ?? "",
+                    overflow: TextOverflow.ellipsis,
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    style: TextStyles.heading.copyWith(
+                      color: Colors.white,
+                      fontSize:
+                          ResponsiveWidget.isSmallScreen(context) ? 14.0 : 20.0,
+                    ),
+                  )
+                ],
               ),
             ),
           ),
@@ -45,6 +61,15 @@ class WebViewPage extends StatelessWidget {
           ),
         ),
       ),
+    );
+  }
+
+  Widget _buildLeadingIconButton(BuildContext context) {
+    return IconButton(
+      icon: Image.network(Assets.ic_back, height: 20.0, width: 20.0),
+      onPressed: () {
+        Navigator.pop(context);
+      },
     );
   }
 }

@@ -38,7 +38,7 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
     return IconButton(
       icon: Image.network(
         Assets.ic_menu,
-        height: ScreenUtil.getInstance().setWidth(36),
+        height: ScreenUtil.getInstance().setWidth(48),
       ),
       onPressed: () {
         _drawerKey.currentState?.openDrawer();

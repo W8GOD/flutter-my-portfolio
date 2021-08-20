@@ -33,6 +33,7 @@ class _BlogPageState extends NavigationActions<BlogPage> {
                 horizontal: (ScreenUtil.getInstance().setWidth(108))),
         child: Scaffold(
           key: _drawerKey,
+          drawerEdgeDragWidth: 0.0,
           backgroundColor: Colors.transparent,
           drawer: buildDrawer(context, PageType.blog),
           appBar: buildAppBar(context, _drawerKey, PageType.blog)
@@ -78,8 +79,8 @@ class _BlogPageState extends NavigationActions<BlogPage> {
               title: data?.blogs?[index].title ?? "",
               onClickAction: () {
                 if (data?.blogs?[index].content?.isNotEmpty == true) {
-                  navigateToNextWebViewPage(data?.blogs?[index].title,
-                      data!.blogs![index].content!);
+                  navigateToNextWebViewPage(
+                      data?.blogs?[index].title, data!.blogs![index].content!);
                 } else {
                   ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     content: Text(
@@ -140,28 +141,35 @@ class _CardItem extends StatelessWidget {
       image: DecorationImage(
         image: NetworkImage(imageUrl),
         fit: BoxFit.cover,
-        alignment: Alignment.topCenter,
+        alignment: Alignment.center,
       ),
     );
   }
 
   Widget _cardTextItem(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      color: Colors.black54,
-      child: Padding(
-        padding: EdgeInsets.all(8),
-        child: Text(
-          title,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: TextStyles.heading.copyWith(
-            color: Colors.white,
-            fontSize: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 14.0,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.center,
+      mainAxisAlignment: MainAxisAlignment.end,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Container(
+          width: double.infinity,
+          color: Colors.black54,
+          child: Padding(
+            padding: EdgeInsets.all(8),
+            child: Text(
+              title,
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              style: TextStyles.heading.copyWith(
+                color: Colors.white,
+                fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 16.0,
+              ),
+              maxLines: 2,
+            ),
           ),
-          maxLines: 2,
-        ),
-      ),
+        )
+      ],
     );
   }
 }

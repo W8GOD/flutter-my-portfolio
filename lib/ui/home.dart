@@ -29,6 +29,7 @@ class _HomePageState extends NavigationActions {
                 horizontal: (ScreenUtil.getInstance().setWidth(108))),
         child: Scaffold(
           key: _drawerKey,
+          drawerEdgeDragWidth: 0.0,
           backgroundColor: Colors.transparent,
           appBar: buildAppBar(context, _drawerKey, PageType.home)
               as PreferredSizeWidget,
