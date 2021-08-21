@@ -46,7 +46,7 @@ class TextStyles {
 
   static TextStyle get body => TextStyle(
         fontFamily: Fonts.product,
-        color: Color(Colours.color_primary),
+        color: Color(Colours.color_primary_dark),
         height: 1.5,
         fontSize: 12.0,
         letterSpacing: 1.0,
@@ -54,7 +54,7 @@ class TextStyles {
 
   static TextStyle get body1 => TextStyle(
         fontFamily: Fonts.product,
-        color: Color(Colours.color_primary),
+        color: Color(Colours.color_primary_dark),
         height: 1.5,
         fontSize: 10.0,
         letterSpacing: 1.0,
@@ -62,7 +62,7 @@ class TextStyles {
 
   static TextStyle get chip => TextStyle(
         fontFamily: Fonts.product,
-        color: Color(Colours.color_primary),
+        color: Color(Colours.color_primary_dark),
         height: 1.5,
         fontSize: 12.0,
         letterSpacing: 1.0,

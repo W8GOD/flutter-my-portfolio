@@ -21,7 +21,7 @@ class _AboutPageState extends NavigationActions {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_snow),
+      color: Color(Colours.color_background),
       child: Padding(
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
@@ -208,6 +208,7 @@ class _AboutPageState extends NavigationActions {
           textAlign: TextAlign.start,
           style: TextStyles.body.copyWith(
             fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
+            color: Color(Colours.color_primary_dark)
           ),
         ),
       ],
@@ -232,7 +233,7 @@ class _AboutPageState extends NavigationActions {
           TextSpan(
             text: Strings.me,
             style: TextStyles.heading.copyWith(
-              color: Color(0xFF50AFC0),
+              color: Color(Colours.color_accent),
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
             ),
           ),
@@ -255,7 +256,7 @@ class _AboutPageState extends NavigationActions {
   Widget _buildEducationContainerHeading() {
     return SelectableText(
       Strings.education,
-      style: TextStyles.sub_heading,
+      style: TextStyles.sub_heading.copyWith(fontWeight: FontWeight.bold),
     );
   }
 
@@ -279,12 +280,14 @@ class _AboutPageState extends NavigationActions {
           SelectableText(
             '${education.university}',
             style: TextStyles.body.copyWith(
-              color: Color(0xFF45405B),
+              color: Color(Colours.color_primary_dark),
             ),
           ),
           SelectableText(
             '${education.from}-${education.to}',
-            style: TextStyles.body,
+            style: TextStyles.body.copyWith(
+              color: Color(Colours.color_primary)
+            ),
           ),
         ],
       ),
@@ -305,7 +308,7 @@ class _AboutPageState extends NavigationActions {
   Widget _buildWorkExperienceContainerHeading() {
     return SelectableText(
       Strings.work_experience,
-      style: TextStyles.sub_heading,
+      style: TextStyles.sub_heading.copyWith(fontWeight: FontWeight.bold),
     );
   }
 
@@ -329,12 +332,14 @@ class _AboutPageState extends NavigationActions {
           SelectableText(
             '${workExperience.organization}',
             style: TextStyles.body.copyWith(
-              color: Color(0xFF45405B),
+              color: Color(Colours.color_primary_dark),
             ),
           ),
           SelectableText(
             '${workExperience.from}-${workExperience.to}',
-            style: TextStyles.body,
+            style: TextStyles.body.copyWith(
+              color: Color(Colours.color_primary)
+            ),
           ),
         ],
       ),
@@ -344,7 +349,7 @@ class _AboutPageState extends NavigationActions {
   Widget _buildTechnicalSkills(BuildContext context) {
     final List<Widget> widgets = technicalSkills
         .map((skill) => Padding(
-              padding: EdgeInsets.only(top: 4.0, right: 4.0),
+              padding: EdgeInsets.only(top: 8.0, right: 4.0),
               child: _buildSkillChip(context, skill),
             ))
         .toList();
@@ -414,6 +419,7 @@ class _AboutPageState extends NavigationActions {
 
   Widget _buildSkillChip(BuildContext context, String label) {
     return Chip(
+      backgroundColor: Color(Colours.color_highlight),
       label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(
@@ -426,14 +432,14 @@ class _AboutPageState extends NavigationActions {
   Widget _buildTechnicalSkillsContainerHeading() {
     return SelectableText(
       Strings.technical_skills,
-      style: TextStyles.sub_heading,
+      style: TextStyles.sub_heading.copyWith(fontWeight: FontWeight.bold),
     );
   }
 
   Widget _buildSoftSkillsContainerHeading() {
     return SelectableText(
       Strings.soft_skills,
-      style: TextStyles.sub_heading,
+      style: TextStyles.sub_heading.copyWith(fontWeight: FontWeight.bold),
     );
   }
 

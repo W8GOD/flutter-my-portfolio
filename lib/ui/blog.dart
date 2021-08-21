@@ -25,7 +25,7 @@ class _BlogPageState extends NavigationActions<BlogPage> {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_snow),
+      color: Color(Colours.color_background),
       child: Padding(
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
@@ -44,7 +44,7 @@ class _BlogPageState extends NavigationActions<BlogPage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return LayoutBuilder(
-                      builder: (context, constraints) => _cardList(
+                      builder: (context, constraints) => _buildCardList(
                           context, constraints, snapshot.data as BlogList));
                 } else {
                   return Center(
@@ -59,7 +59,7 @@ class _BlogPageState extends NavigationActions<BlogPage> {
     );
   }
 
-  Widget _cardList(
+  Widget _buildCardList(
       BuildContext context, BoxConstraints constraints, BlogList? data) {
     return Container(
         child: SingleChildScrollView(
@@ -130,13 +130,13 @@ class _CardItem extends StatelessWidget {
         ),
         child: Container(
             alignment: Alignment.bottomCenter,
-            decoration: _cardImageItem(),
-            child: _cardTextItem(context)),
+            decoration: _buildCardImageItem(),
+            child: _buildCardTextItem(context)),
       ),
     );
   }
 
-  BoxDecoration _cardImageItem() {
+  BoxDecoration _buildCardImageItem() {
     return BoxDecoration(
       image: DecorationImage(
         image: NetworkImage(imageUrl),
@@ -146,30 +146,36 @@ class _CardItem extends StatelessWidget {
     );
   }
 
-  Widget _cardTextItem(BuildContext context) {
+  Widget _buildCardTextItem(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.center,
       mainAxisAlignment: MainAxisAlignment.end,
       mainAxisSize: MainAxisSize.max,
       children: [
-        Container(
-          width: double.infinity,
-          color: Colors.black54,
-          child: Padding(
-            padding: EdgeInsets.all(8),
-            child: Text(
-              title,
-              overflow: TextOverflow.ellipsis,
-              textAlign: TextAlign.center,
-              style: TextStyles.heading.copyWith(
-                color: Colors.white,
-                fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 16.0,
-              ),
-              maxLines: 2,
-            ),
-          ),
-        )
+        _buildBlogTitle(context),
       ],
     );
   }
+
+  Widget _buildBlogTitle(BuildContext context) {
+    return Container(
+      width: double.infinity,
+      color: Colors.black54,
+      child: Padding(
+        padding: EdgeInsets.all(8),
+        child: Text(
+          title,
+          overflow: TextOverflow.ellipsis,
+          textAlign: TextAlign.center,
+          style: TextStyles.heading.copyWith(
+            color: Colors.white,
+            fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 16.0,
+          ),
+          maxLines: 2,
+        ),
+      ),
+    );
+  }
 }
+
+//published date

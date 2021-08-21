@@ -2,7 +2,6 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants/assets.dart';
 import 'package:my_portfolio/constants/colours.dart';
-import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/page_type.dart';
@@ -21,7 +20,7 @@ class _HomePageState extends NavigationActions {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_snow),
+      color: Color(Colours.color_background),
       child: Padding(
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
@@ -168,7 +167,7 @@ class _HomePageState extends NavigationActions {
         SelectableText(
           Strings.hello,
           style: TextStyles.heading.copyWith(
-            fontFamily: Fonts.quicksand_bold,
+            color: Color(Colours.color_accent),
             fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 18.0,
           ),
         ),
@@ -187,7 +186,6 @@ class _HomePageState extends NavigationActions {
           TextSpan(
             text: Strings.introduce,
             style: TextStyles.heading.copyWith(
-              fontFamily: Fonts.quicksand_bold,
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 32.0,
             ),
           ),
@@ -199,8 +197,7 @@ class _HomePageState extends NavigationActions {
               TypewriterAnimatedText(
                 Strings.full_name,
                 textStyle: TextStyles.heading.copyWith(
-                  fontFamily: Fonts.quicksand_light,
-                  color: Color(Colours.color_accent),
+                  color: Color(Colours.color_primary),
                   fontSize:
                       ResponsiveWidget.isSmallScreen(context) ? 26.0 : 32.0,
                 ),
@@ -217,15 +214,15 @@ class _HomePageState extends NavigationActions {
   }
 
   Widget _buildPositionDescription(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.zero,
+    return Container(
+      alignment: Alignment.topLeft,
       child: SelectableText(
         Strings.position_detail,
         textAlign: ResponsiveWidget.isSmallScreen(context)
             ? TextAlign.center
             : TextAlign.start,
         style: TextStyles.body.copyWith(
-          fontFamily: Fonts.quicksand_light,
+          color: Color(Colours.color_accent),
           fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 26.0,
         ),
       ),

@@ -17,7 +17,7 @@ class WebViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_snow),
+      color: Color(Colours.color_background),
       child: Padding(
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero

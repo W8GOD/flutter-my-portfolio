@@ -58,7 +58,6 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
             text: Strings.name,
             style: TextStyles.logo.copyWith(
               fontFamily: Fonts.quicksand_bold,
-              color: Color(Colours.color_accent),
             ),
           ),
         ],
