@@ -61,12 +61,22 @@ class _BlogPageState extends NavigationActions<BlogPage> {
 
   Widget _buildCardList(
       BuildContext context, BoxConstraints constraints, BlogList? data) {
+    int axisCount = 0;
+    if (ResponsiveWidget.isSmallScreen(context)) {
+      axisCount = 2;
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
+      axisCount = 3;
+    } else {
+      axisCount = 5;
+    }
+
     return Container(
         child: SingleChildScrollView(
       child: GridView.count(
-        childAspectRatio: constraints.biggest.aspectRatio * 3 / 2,
         shrinkWrap: true,
-        crossAxisCount: ResponsiveWidget.isSmallScreen(context) ? 2 : 3,
+        childAspectRatio: 9.0 / 8.0,
+        padding: EdgeInsets.all(16.0),
+        crossAxisCount: axisCount,
         physics: NeverScrollableScrollPhysics(),
         children: List.generate(
           (data?.blogs != null && data?.blogs?.isNotEmpty == true)
@@ -118,63 +128,40 @@ class _CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        onClickAction();
-      },
-      child: Card(
+    return Card(
         elevation: 4,
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8),
+          borderRadius: BorderRadius.circular(8.0),
         ),
-        child: Container(
-            alignment: Alignment.bottomCenter,
-            decoration: _buildCardImageItem(),
-            child: _buildCardTextItem(context)),
-      ),
-    );
-  }
-
-  BoxDecoration _buildCardImageItem() {
-    return BoxDecoration(
-      image: DecorationImage(
-        image: NetworkImage(imageUrl),
-        fit: BoxFit.cover,
-        alignment: Alignment.center,
-      ),
-    );
-  }
-
-  Widget _buildCardTextItem(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.end,
-      mainAxisSize: MainAxisSize.max,
-      children: [
-        _buildBlogTitle(context),
-      ],
-    );
-  }
-
-  Widget _buildBlogTitle(BuildContext context) {
-    return Container(
-      width: double.infinity,
-      color: Colors.black54,
-      child: Padding(
-        padding: EdgeInsets.all(8),
-        child: Text(
-          title,
-          overflow: TextOverflow.ellipsis,
-          textAlign: TextAlign.center,
-          style: TextStyles.heading.copyWith(
-            color: Colors.white,
-            fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 16.0,
-          ),
-          maxLines: 2,
-        ),
-      ),
-    );
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            AspectRatio(
+              aspectRatio: 16.0 / 9.0,
+              child: Image.network(imageUrl, fit: BoxFit.fill),
+            ),
+            Expanded(
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 0.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Text(
+                      title,
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: TextStyles.heading.copyWith(
+                        fontSize: 13.0,
+                      ),
+                      maxLines: 2,
+                    ),
+                  ],
+                ),
+              ),
+            ),
+          ],
+        ));
   }
 }
 
