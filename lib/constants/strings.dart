@@ -5,9 +5,8 @@ class Strings {
   static const String name = 'A.ARNON';
   static const String introduce = 'I\'am';
   static const String full_name = ' Arnon Aroondech';
-  static const String introduce_full_name = 'I\'am Arnon Aroondech';
   static const String about = 'About';
-  static const String me = ' Me';
+  static const String about_me = 'About Me';
   static const String position_detail =
       'Android Developer and Designer from Bangkok, Thailand';
   static const String summary =

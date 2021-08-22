@@ -167,13 +167,29 @@ class _AboutPageState extends NavigationActions {
   }
 
   Widget _buildHeadline(BuildContext context) {
-    return SelectableText(
-      Strings.introduce_full_name,
-      style: TextStyles.body.copyWith(
-        fontFamily: Fonts.quicksand_bold,
-        fontSize: ResponsiveWidget.isSmallScreen(context) ? 18 : 22.0,
-      ),
-    );
+    return Row(
+        mainAxisSize: MainAxisSize.max,
+        mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
+            ? MainAxisAlignment.center
+            : MainAxisAlignment.start,
+        children: <Widget>[
+          SelectableText(
+            Strings.introduce,
+            style: TextStyles.body.copyWith(
+              color: Color(Colours.color_primary_dark),
+              fontFamily: Fonts.quicksand_bold,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 18 : 22.0,
+            ),
+          ),
+          SelectableText(
+            Strings.full_name,
+            style: TextStyles.body.copyWith(
+              color: Color(Colours.color_primary),
+              fontFamily: Fonts.quicksand_bold,
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 18 : 22.0,
+            ),
+          ),
+        ]);
   }
 
   Widget _buildSummarySingleColumns(BuildContext context) {
@@ -207,9 +223,8 @@ class _AboutPageState extends NavigationActions {
           summary,
           textAlign: TextAlign.start,
           style: TextStyles.body.copyWith(
-            fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
-            color: Color(Colours.color_primary_dark)
-          ),
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 14 : 16.0,
+              color: Color(Colours.color_primary_dark)),
         ),
       ],
     );
@@ -224,19 +239,12 @@ class _AboutPageState extends NavigationActions {
         ),
         children: <TextSpan>[
           TextSpan(
-            text: Strings.about,
+            text: Strings.about_me,
             style: TextStyles.heading.copyWith(
               fontFamily: Fonts.quicksand_bold,
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
             ),
-          ),
-          TextSpan(
-            text: Strings.me,
-            style: TextStyles.heading.copyWith(
-              color: Color(Colours.color_accent),
-              fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
-            ),
-          ),
+          )
         ],
       ),
     );
@@ -285,9 +293,8 @@ class _AboutPageState extends NavigationActions {
           ),
           SelectableText(
             '${education.from}-${education.to}',
-            style: TextStyles.body.copyWith(
-              color: Color(Colours.color_primary)
-            ),
+            style:
+                TextStyles.body.copyWith(color: Color(Colours.color_primary)),
           ),
         ],
       ),
@@ -337,9 +344,8 @@ class _AboutPageState extends NavigationActions {
           ),
           SelectableText(
             '${workExperience.from}-${workExperience.to}',
-            style: TextStyles.body.copyWith(
-              color: Color(Colours.color_primary)
-            ),
+            style:
+                TextStyles.body.copyWith(color: Color(Colours.color_primary)),
           ),
         ],
       ),
@@ -419,7 +425,7 @@ class _AboutPageState extends NavigationActions {
 
   Widget _buildSkillChip(BuildContext context, String label) {
     return Chip(
-      backgroundColor: Color(Colours.color_highlight),
+      backgroundColor: Color(Colours.color_highlight).withOpacity(0.5),
       label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(

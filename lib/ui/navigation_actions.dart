@@ -51,7 +51,7 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
       text: TextSpan(
         style: TextStyle(
           fontSize: 14.0,
-          color: Colors.black,
+          color: Color(Colours.color_primary_dark),
         ),
         children: <TextSpan>[
           TextSpan(
@@ -126,9 +126,12 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
   Widget? buildDrawer(BuildContext context, PageType pageType) {
     if (ResponsiveWidget.isSmallScreen(context)) {
       return Drawer(
-        child: ListView(
-          padding: EdgeInsets.all(20),
-          children: buildActions(context, pageType),
+        child: Container(
+          color: Color(Colours.color_background),
+          child: ListView(
+            padding: EdgeInsets.all(20),
+            children: buildActions(context, pageType),
+          ),
         ),
       );
     } else {

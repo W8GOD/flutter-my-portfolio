@@ -203,7 +203,7 @@ class _HomePageState extends NavigationActions {
                 ),
               ),
             ],
-            totalRepeatCount: 5,
+            totalRepeatCount: 4,
             pause: Duration(microseconds: 200),
             displayFullTextOnTap: true,
             stopPauseOnTap: true,

@@ -130,6 +130,7 @@ class _CardItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Card(
         elevation: 4,
+        color: Color(Colours.color_background),
         clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(8.0),
@@ -143,7 +144,7 @@ class _CardItem extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.fromLTRB(16.0, 12.0, 16.0, 0.0),
+                padding: EdgeInsets.all(4),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
