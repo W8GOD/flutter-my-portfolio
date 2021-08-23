@@ -4,7 +4,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants/assets.dart';
 import 'package:my_portfolio/constants/colours.dart';
-import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/page_type.dart';
@@ -14,6 +13,7 @@ import 'package:my_portfolio/widgets/responsive_widget.dart';
 
 import 'about.dart';
 import 'blog.dart';
+import 'contact.dart';
 import 'home.dart';
 
 abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
@@ -54,12 +54,7 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
           color: Color(Colours.color_primary_dark),
         ),
         children: <TextSpan>[
-          TextSpan(
-            text: Strings.name,
-            style: TextStyles.logo.copyWith(
-              fontFamily: Fonts.quicksand_bold,
-            ),
-          ),
+          TextSpan(text: Strings.name, style: TextStyles.logo),
         ],
       ),
     );
@@ -72,7 +67,6 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
           Strings.menu_home,
           style: TextStyles.menu_item.copyWith(
             color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
             fontSize: 16.0,
           ),
         ),
@@ -86,7 +80,6 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
           Strings.menu_about,
           style: TextStyles.menu_item.copyWith(
             color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
             fontSize: 16.0,
           ),
         ),
@@ -100,7 +93,6 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
           Strings.menu_blog,
           style: TextStyles.menu_item.copyWith(
             color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
             fontSize: 16.0,
           ),
         ),
@@ -114,11 +106,13 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
           Strings.menu_contact,
           style: TextStyles.menu_item.copyWith(
             color: Color(Colours.color_accent),
-            fontFamily: Fonts.quicksand_bold,
             fontSize: 16.0,
           ),
         ),
-        onPressed: () {},
+        onPressed: () {
+          if (pageType != PageType.contact)
+            navigateToNextPage(context, ContactPage());
+        },
       ),
     ];
   }

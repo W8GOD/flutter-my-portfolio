@@ -28,9 +28,21 @@ class Strings {
   static const String rights_reserved =
       '© 2021 ARNON AROONDECH. ALL RIGHTS RESERVED.';
 
-  // menu items
   static const String menu_home = 'Home';
   static const String menu_about = 'About';
   static const String menu_blog = 'Blog';
   static const String menu_contact = 'Contact';
+
+  static const String github_link = 'https://github.com/W8GOD';
+  static const String medium_link = 'https://medium.com/@arnona56';
+  static const String linkedin_link =
+      'https://www.linkedin.com/in/arnon-aroondech';
+  static const String facebook_link = 'https://www.facebook.com/Arnon001';
+
+  static const String contact_me = 'Contact me';
+  static const String github = 'Github';
+  static const String linkedin = 'Linkedin';
+  static const String medium = 'Medium';
+  static const String facebook = 'Facebook';
+  static const String phone = '(+66) 918059469';
 }

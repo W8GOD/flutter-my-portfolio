@@ -30,7 +30,7 @@ class _BlogPageState extends NavigationActions<BlogPage> {
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
             : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108))),
+                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
         child: Scaffold(
           key: _drawerKey,
           drawerEdgeDragWidth: 0.0,
@@ -165,5 +165,3 @@ class _CardItem extends StatelessWidget {
         ));
   }
 }
-
-//published date

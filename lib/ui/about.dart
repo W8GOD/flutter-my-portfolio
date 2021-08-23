@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/constants/colours.dart';
-import 'package:my_portfolio/constants/fonts.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/education.dart';
@@ -26,7 +25,7 @@ class _AboutPageState extends NavigationActions {
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
             : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108))),
+                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
         child: Scaffold(
           key: _drawerKey,
           drawerEdgeDragWidth: 0.0,
@@ -46,7 +45,7 @@ class _AboutPageState extends NavigationActions {
     return SingleChildScrollView(
       padding: ResponsiveWidget.isSmallScreen(context)
           ? EdgeInsets.symmetric(
-              horizontal: (ScreenUtil.getInstance().setWidth(108)))
+              horizontal: (ScreenUtil.getInstance().setWidth(108.0)))
           : EdgeInsets.zero,
       child: ConstrainedBox(
         constraints: BoxConstraints(
@@ -177,7 +176,6 @@ class _AboutPageState extends NavigationActions {
             Strings.introduce,
             style: TextStyles.body.copyWith(
               color: Color(Colours.color_primary_dark),
-              fontFamily: Fonts.quicksand_bold,
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 18 : 22.0,
             ),
           ),
@@ -185,7 +183,6 @@ class _AboutPageState extends NavigationActions {
             Strings.full_name,
             style: TextStyles.body.copyWith(
               color: Color(Colours.color_primary),
-              fontFamily: Fonts.quicksand_bold,
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 18 : 22.0,
             ),
           ),
@@ -241,7 +238,6 @@ class _AboutPageState extends NavigationActions {
           TextSpan(
             text: Strings.about_me,
             style: TextStyles.heading.copyWith(
-              fontFamily: Fonts.quicksand_bold,
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 36 : 45.0,
             ),
           )

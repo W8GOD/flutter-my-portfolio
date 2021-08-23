@@ -25,7 +25,7 @@ class _HomePageState extends NavigationActions {
         padding: ResponsiveWidget.isSmallScreen(context)
             ? EdgeInsets.zero
             : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108))),
+                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
         child: Scaffold(
           key: _drawerKey,
           drawerEdgeDragWidth: 0.0,
@@ -45,7 +45,7 @@ class _HomePageState extends NavigationActions {
     return SingleChildScrollView(
       padding: ResponsiveWidget.isSmallScreen(context)
           ? EdgeInsets.symmetric(
-              horizontal: (ScreenUtil.getInstance().setWidth(108)))
+              horizontal: (ScreenUtil.getInstance().setWidth(108.0)))
           : EdgeInsets.zero,
       child: ConstrainedBox(
         constraints: BoxConstraints(
@@ -70,7 +70,7 @@ class _HomePageState extends NavigationActions {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Expanded(flex: 1, child: _buildContent(context)),
-                _buildImageProfile(345),
+                _buildImageProfile(345.0),
               ],
             ),
           ),
@@ -92,8 +92,8 @@ class _HomePageState extends NavigationActions {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.zero,
-                  child: _buildImageProfile(640),
+                  padding: EdgeInsets.all(20.0),
+                  child: _buildImageProfile(640.0),
                 ),
                 _buildContent(context),
               ],
@@ -117,8 +117,8 @@ class _HomePageState extends NavigationActions {
               mainAxisSize: MainAxisSize.max,
               children: <Widget>[
                 Container(
-                  padding: EdgeInsets.all(10),
-                  child: _buildImageProfile(720),
+                  padding: EdgeInsets.all(10.0),
+                  child: _buildImageProfile(720.0),
                 ),
                 _buildContent(context),
               ],
@@ -138,7 +138,7 @@ class _HomePageState extends NavigationActions {
 
   Widget _buildImageProfile(double imageSize) {
     return Image.network(
-      Assets.ic_profile,
+      Assets.profile,
       height: ScreenUtil.getInstance().setWidth(imageSize),
     );
   }
