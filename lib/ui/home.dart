@@ -154,6 +154,8 @@ class _HomePageState extends NavigationActions {
         _buildFullName(context),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 8.0 : 16.0),
         _buildPositionDescription(context),
+        SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 8.0 : 16.0),
+        _buildCaption(context),
       ],
     );
   }
@@ -218,6 +220,22 @@ class _HomePageState extends NavigationActions {
       alignment: Alignment.topLeft,
       child: SelectableText(
         Strings.position_detail,
+        textAlign: ResponsiveWidget.isSmallScreen(context)
+            ? TextAlign.center
+            : TextAlign.start,
+        style: TextStyles.body.copyWith(
+          color: Color(Colours.color_primary_dark),
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 26.0,
+        ),
+      ),
+    );
+  }
+
+  Widget _buildCaption(BuildContext context) {
+    return Container(
+      alignment: Alignment.topLeft,
+      child: SelectableText(
+        Strings.caption,
         textAlign: ResponsiveWidget.isSmallScreen(context)
             ? TextAlign.center
             : TextAlign.start,

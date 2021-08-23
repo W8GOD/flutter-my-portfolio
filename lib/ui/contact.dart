@@ -90,9 +90,10 @@ class _ContactPageState extends NavigationActions<ContactPage> {
   }
 
   Widget _buildImageProfile() {
-    return CircleAvatar(
-      radius: 100.0,
-      backgroundImage: Image.network(Assets.profile).image,
+    return Container(
+      alignment: Alignment.center,
+      height: 200,
+      child: Image.network(Assets.mail),
     );
   }
 

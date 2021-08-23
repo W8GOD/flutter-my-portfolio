@@ -3,6 +3,7 @@ class WorkExperience {
   String to;
   String organization;
   String post;
+  String icon;
 
-  WorkExperience(this.from, this.to, this.organization, this.post);
+  WorkExperience(this.from, this.to, this.organization, this.post, this.icon);
 }

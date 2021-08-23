@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:my_portfolio/constants/assets.dart';
 import 'package:my_portfolio/constants/colours.dart';
 import 'package:my_portfolio/constants/strings.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
@@ -328,6 +329,11 @@ class _AboutPageState extends NavigationActions {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
+          Container(
+            alignment: Alignment.bottomLeft,
+            child: SizedBox(
+                height: 30.0, child: Image.network(workExperience.icon)),
+          ),
           SelectableText(
             '${workExperience.post}',
             style: TextStyles.company,
@@ -455,24 +461,12 @@ class _AboutPageState extends NavigationActions {
   ];
 
   final workExperienceList = [
-    WorkExperience(
-      'Jun 2017',
-      'Nov 2017',
-      'Geotalent., Co. Ltd.',
-      'Programmer (Android/iOS Developer)',
-    ),
-    WorkExperience(
-      'Nov 2017',
-      'Jul 2019',
-      'True Digital Group., Co. Ltd.',
-      'Programmer (Android)',
-    ),
-    WorkExperience(
-      'Aug 2019',
-      'Present',
-      'Amity Corporation (HQ)',
-      'Android Engineer',
-    ),
+    WorkExperience('Jun 2017', 'Nov 2017', 'Geotalent., Co. Ltd.',
+        'Programmer (Android/iOS Developer)', Assets.ic_geotalent),
+    WorkExperience('Nov 2017', 'Jul 2019', 'True Digital Group., Co. Ltd.',
+        'Programmer (Android)', Assets.ic_true),
+    WorkExperience('Aug 2019', 'Present', 'Amity Corporation (HQ)',
+        'Android Engineer', Assets.ic_amity),
   ];
 
   final technicalSkills = [

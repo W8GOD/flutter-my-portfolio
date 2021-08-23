@@ -9,6 +9,8 @@ class Strings {
   static const String about_me = 'About Me';
   static const String position_detail =
       'Android Developer and Designer from Bangkok, Thailand';
+  static const String caption =
+      '“I spent most time building things using this technologies to know about every single thing inside full system”';
   static const String summary =
       '      Expert and passionate mobile application developer specializing '
       'in Android, Java, and Kotlin development. Over 4+ years of experience '
