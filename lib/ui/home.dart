@@ -155,7 +155,9 @@ class _HomePageState extends NavigationActions {
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 8.0 : 16.0),
         _buildPositionDescription(context),
         SizedBox(height: ResponsiveWidget.isSmallScreen(context) ? 8.0 : 16.0),
-        _buildCaption(context),
+        ResponsiveWidget.isSmallScreen(context)
+            ? Container()
+            : _buildCaption(context),
       ],
     );
   }

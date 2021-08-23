@@ -53,7 +53,7 @@ class _ContactPageState extends NavigationActions<ContactPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              _buildImageProfile(),
+              _buildImageProfile(context),
               SizedBox(
                 height: 20.0,
               ),
@@ -89,10 +89,10 @@ class _ContactPageState extends NavigationActions<ContactPage> {
     );
   }
 
-  Widget _buildImageProfile() {
+  Widget _buildImageProfile(BuildContext context) {
     return Container(
       alignment: Alignment.center,
-      height: 200,
+      height: ResponsiveWidget.isSmallScreen(context) ? 100 : 200,
       child: Image.network(Assets.mail),
     );
   }
@@ -101,7 +101,9 @@ class _ContactPageState extends NavigationActions<ContactPage> {
     return Text(
       Strings.contact_me,
       textScaleFactor: 4.0,
-      style: TextStyles.sub_heading.copyWith(fontWeight: FontWeight.bold),
+      style: TextStyles.sub_heading.copyWith(
+          fontWeight: FontWeight.bold,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 12 : 17),
     );
   }
 
