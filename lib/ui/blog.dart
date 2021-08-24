@@ -62,10 +62,6 @@ class _BlogPageState extends NavigationActions<BlogPage> {
   Widget _buildBody(BuildContext context, BoxConstraints constraints,
       AsyncSnapshot<Object?> snapshot) {
     return SingleChildScrollView(
-      padding: ResponsiveWidget.isSmallScreen(context)
-          ? EdgeInsets.symmetric(
-              horizontal: (ScreenUtil.getInstance().setWidth(108.0)))
-          : EdgeInsets.zero,
       child: ConstrainedBox(
         constraints: BoxConstraints(
             minWidth: constraints.maxWidth, minHeight: constraints.maxHeight),
