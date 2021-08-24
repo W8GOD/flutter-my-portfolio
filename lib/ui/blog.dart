@@ -67,7 +67,7 @@ class _BlogPageState extends NavigationActions<BlogPage> {
     } else if (ResponsiveWidget.isMediumScreen(context)) {
       axisCount = 3;
     } else {
-      axisCount = 5;
+      axisCount = 4;
     }
 
     return Container(
@@ -144,7 +144,7 @@ class _CardItem extends StatelessWidget {
             ),
             Expanded(
               child: Padding(
-                padding: EdgeInsets.all(4),
+                padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: <Widget>[
@@ -153,7 +153,7 @@ class _CardItem extends StatelessWidget {
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: TextStyles.heading.copyWith(
-                        fontSize: 13.0,
+                        fontSize: _getTitleFontSize(context),
                       ),
                       maxLines: 2,
                     ),
@@ -163,5 +163,17 @@ class _CardItem extends StatelessWidget {
             ),
           ],
         ));
+  }
+
+  double _getTitleFontSize(BuildContext context) {
+    double fontSize = 12.0;
+    if (ResponsiveWidget.isSmallScreen(context)) {
+      fontSize = 12.0;
+    } else if (ResponsiveWidget.isMediumScreen(context)) {
+      fontSize = 14.0;
+    } else {
+      fontSize = 18.0;
+    }
+    return fontSize;
   }
 }

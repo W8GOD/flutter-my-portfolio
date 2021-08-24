@@ -245,7 +245,7 @@ class _HomePageState extends NavigationActions {
             : TextAlign.start,
         style: TextStyles.body.copyWith(
           color: Color(Colours.color_accent),
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 20.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 16.0,
         ),
       ),
     );
