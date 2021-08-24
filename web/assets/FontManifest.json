@@ -30,5 +30,13 @@
       }
     ],
     "family": "QuicksandLight"
+  },
+  {
+    "fonts": [
+      {
+        "asset": "fonts/Quicksand-Medium.ttf"
+      }
+    ],
+    "family": "QuicksandMedium"
   }
 ]

@@ -219,7 +219,9 @@ class _HomePageState extends NavigationActions {
 
   Widget _buildPositionDescription(BuildContext context) {
     return Container(
-      alignment: Alignment.topLeft,
+      alignment: ResponsiveWidget.isSmallScreen(context)
+          ? Alignment.center
+          : Alignment.centerLeft,
       child: SelectableText(
         Strings.position_detail,
         textAlign: ResponsiveWidget.isSmallScreen(context)
@@ -227,7 +229,7 @@ class _HomePageState extends NavigationActions {
             : TextAlign.start,
         style: TextStyles.body.copyWith(
           color: Color(Colours.color_primary_dark),
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 26.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 20.0,
         ),
       ),
     );
@@ -243,7 +245,7 @@ class _HomePageState extends NavigationActions {
             : TextAlign.start,
         style: TextStyles.body.copyWith(
           color: Color(Colours.color_accent),
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 26.0,
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 14.0 : 20.0,
         ),
       ),
     );

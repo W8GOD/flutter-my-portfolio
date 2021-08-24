@@ -329,10 +329,13 @@ class _AboutPageState extends NavigationActions {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Container(
-            alignment: Alignment.bottomLeft,
-            child: SizedBox(
-                height: 30.0, child: Image.network(workExperience.icon)),
+          Row(
+            mainAxisSize: MainAxisSize.max,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              SizedBox(height: 30.0, child: Image.network(workExperience.icon))
+            ],
           ),
           SelectableText(
             '${workExperience.post}',

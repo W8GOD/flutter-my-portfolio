@@ -101,18 +101,22 @@ class _ContactPageState extends NavigationActions<ContactPage> {
     return Text(
       Strings.contact_me,
       textScaleFactor: 4.0,
-      style: TextStyles.sub_heading.copyWith(
-          fontWeight: FontWeight.bold,
-          fontSize: ResponsiveWidget.isSmallScreen(context) ? 12 : 17),
+      style: TextStyles.heading.copyWith(
+          fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 14),
     );
   }
 
   Widget _buildContactButton(String imageAsset, String title, String link) {
+    double imageSize = ResponsiveWidget.isSmallScreen(context) ? 20.0 : 22.0;
     return TextButton.icon(
-      icon:
-          SizedBox(width: 20.0, height: 20.0, child: Image.network(imageAsset)),
+      icon: SizedBox(
+          width: imageSize,
+          height: imageSize,
+          child: Image.network(imageAsset)),
       label: Text(title,
-          style: TextStyles.body.copyWith(color: Color(Colours.color_accent))),
+          style: TextStyles.heading.copyWith(
+              color: Color(Colours.color_accent),
+              fontSize: ResponsiveWidget.isSmallScreen(context) ? 10 : 14)),
       onPressed: () {
         if (link.isNotEmpty) {
           html.window.open(link, title);
