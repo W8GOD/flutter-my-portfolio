@@ -334,7 +334,9 @@ class _AboutPageState extends NavigationActions {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              SizedBox(height: 30.0, child: Image.network(workExperience.icon))
+              SizedBox(
+                  height: ResponsiveWidget.isSmallScreen(context) ? 20 : 26,
+                  child: Image.network(workExperience.icon))
             ],
           ),
           SelectableText(
@@ -475,14 +477,14 @@ class _AboutPageState extends NavigationActions {
   final technicalSkills = [
     'Kotlin',
     'Java',
-    'Unit Test JUnit/Mockito',
-    'Objective-C',
     'Swift',
+    'Objective-C',
     'Dart',
     'MVC',
     'MVP',
     'MVVM',
     'Clean Architecture',
+    'Unit Test JUnit/Mockito',
     'Flutter',
     'Android',
     'iOS',

@@ -202,7 +202,7 @@ class _HomePageState extends NavigationActions {
                 textStyle: TextStyles.heading.copyWith(
                   color: Color(Colours.color_primary),
                   fontSize:
-                      ResponsiveWidget.isSmallScreen(context) ? 26.0 : 32.0,
+                      ResponsiveWidget.isSmallScreen(context) ? 20.0 : 32.0,
                 ),
               ),
             ],
