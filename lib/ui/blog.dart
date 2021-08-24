@@ -44,8 +44,8 @@ class _BlogPageState extends NavigationActions<BlogPage> {
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   return LayoutBuilder(
-                      builder: (context, constraints) => _buildCardList(
-                          context, constraints, snapshot.data as BlogList));
+                      builder: (context, constraints) =>
+                          _buildBody(context, constraints, snapshot));
                 } else {
                   return Center(
                     child: CircularProgressIndicator(),
@@ -55,6 +55,100 @@ class _BlogPageState extends NavigationActions<BlogPage> {
             ),
           ),
         ),
+      ),
+    );
+  }
+
+  Widget _buildBody(BuildContext context, BoxConstraints constraints,
+      AsyncSnapshot<Object?> snapshot) {
+    return SingleChildScrollView(
+      padding: ResponsiveWidget.isSmallScreen(context)
+          ? EdgeInsets.symmetric(
+              horizontal: (ScreenUtil.getInstance().setWidth(108.0)))
+          : EdgeInsets.zero,
+      child: ConstrainedBox(
+        constraints: BoxConstraints(
+            minWidth: constraints.maxWidth, minHeight: constraints.maxHeight),
+        child: ResponsiveWidget(
+          largeScreen: _buildLargeScreen(context, constraints, snapshot),
+          mediumScreen: _buildMediumScreen(context, constraints, snapshot),
+          smallScreen: _buildSmallScreen(context, constraints, snapshot),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildLargeScreen(BuildContext context, BoxConstraints constraints,
+      AsyncSnapshot<Object?> snapshot) {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Expanded(
+                    flex: 1,
+                    child: _buildCardList(
+                        context, constraints, snapshot.data as BlogList))
+              ],
+            ),
+          ),
+          buildFooter(context)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildMediumScreen(BuildContext context, BoxConstraints constraints,
+      AsyncSnapshot<Object?> snapshot) {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                _buildCardList(context, constraints, snapshot.data as BlogList)
+              ],
+            ),
+          ),
+          buildFooter(context)
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSmallScreen(BuildContext context, BoxConstraints constraints,
+      AsyncSnapshot<Object?> snapshot) {
+    return IntrinsicHeight(
+      child: Column(
+        mainAxisSize: MainAxisSize.max,
+        children: <Widget>[
+          Expanded(
+            flex: 1,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.max,
+              children: <Widget>[
+                _buildCardList(context, constraints, snapshot.data as BlogList)
+              ],
+            ),
+          ),
+          Divider(),
+          buildCopyRightText(context),
+          SizedBox(
+              height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
+          buildSocialIcons(),
+          SizedBox(
+              height: ResponsiveWidget.isSmallScreen(context) ? 12.0 : 0.0),
+        ],
       ),
     );
   }
