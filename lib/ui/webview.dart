@@ -25,6 +25,7 @@ class WebViewPage extends StatelessWidget {
                 horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
         child: Scaffold(
           key: _drawerKey,
+          backgroundColor: Color(Colours.color_background),
           drawerEdgeDragWidth: 0.0,
           appBar: AppBar(
             leading: _buildLeadingIconButton(context),
