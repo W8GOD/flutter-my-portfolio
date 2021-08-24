@@ -182,23 +182,22 @@ class _HomePageState extends NavigationActions {
   Widget _buildFullName(BuildContext context) {
     return Row(
       mainAxisSize: MainAxisSize.max,
+      crossAxisAlignment: ResponsiveWidget.isSmallScreen(context)
+          ? CrossAxisAlignment.center
+          : CrossAxisAlignment.start,
       mainAxisAlignment: ResponsiveWidget.isSmallScreen(context)
           ? MainAxisAlignment.center
           : MainAxisAlignment.start,
       children: <Widget>[
-        Text.rich(
-          TextSpan(
-            text: Strings.introduce,
+        Text(Strings.introduce,
             style: TextStyles.heading.copyWith(
               fontSize: ResponsiveWidget.isSmallScreen(context) ? 20.0 : 32.0,
-            ),
-          ),
-        ),
+            )),
         DefaultTextStyle(
           style: TextStyle(),
           child: AnimatedTextKit(
             animatedTexts: [
-              TypewriterAnimatedText(
+              TyperAnimatedText(
                 Strings.full_name,
                 textStyle: TextStyles.heading.copyWith(
                   color: Color(Colours.color_primary),
