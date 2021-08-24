@@ -465,7 +465,7 @@ class _AboutPageState extends NavigationActions {
 
   final workExperienceList = [
     WorkExperience('Jun 2017', 'Nov 2017', 'Geotalent., Co. Ltd.',
-        'Programmer (Android/iOS Developer)', Assets.ic_geotalent),
+        'Programmer (Android/iOS)', Assets.ic_geotalent),
     WorkExperience('Nov 2017', 'Jul 2019', 'True Digital Group., Co. Ltd.',
         'Programmer (Android)', Assets.ic_true),
     WorkExperience('Aug 2019', 'Present', 'Amity Corporation (HQ)',
