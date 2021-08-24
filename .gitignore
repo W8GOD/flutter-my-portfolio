@@ -59,6 +59,9 @@ linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 
+#Firebase
+.firebase
+
 # Android related
 **/android/**/gradle-wrapper.jar
 **/android/.gradle
