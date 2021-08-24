@@ -128,41 +128,48 @@ class _CardItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-        elevation: 4,
-        color: Color(Colours.color_background),
-        clipBehavior: Clip.antiAlias,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(8.0),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: <Widget>[
-            AspectRatio(
-              aspectRatio: 16.0 / 9.0,
-              child: Image.network(imageUrl, fit: BoxFit.fill),
+    return GestureDetector(
+        onTap: () {
+          onClickAction();
+        },
+        child: Card(
+            elevation: 4,
+            color: Color(Colours.color_background),
+            clipBehavior: Clip.antiAlias,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(8.0),
             ),
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      title,
-                      overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.center,
-                      style: TextStyles.heading.copyWith(
-                        fontSize: _getTitleFontSize(context),
+            child: Container(
+              decoration: BoxDecoration(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: <Widget>[
+                  AspectRatio(
+                    aspectRatio: 16.0 / 9.0,
+                    child: Image.network(imageUrl, fit: BoxFit.fill),
+                  ),
+                  Expanded(
+                    child: Padding(
+                      padding: EdgeInsets.fromLTRB(8.0, 4.0, 8.0, 4.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            title,
+                            overflow: TextOverflow.ellipsis,
+                            textAlign: TextAlign.center,
+                            style: TextStyles.heading.copyWith(
+                              fontSize: _getTitleFontSize(context),
+                            ),
+                            maxLines: 2,
+                          ),
+                        ],
                       ),
-                      maxLines: 2,
                     ),
-                  ],
-                ),
+                  ),
+                ],
               ),
-            ),
-          ],
-        ));
+            )));
   }
 
   double _getTitleFontSize(BuildContext context) {
