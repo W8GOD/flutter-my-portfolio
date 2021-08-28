@@ -246,7 +246,7 @@ class _CardItem extends StatelessWidget {
                         children: <Widget>[
                           Text(
                             title,
-                            overflow: TextOverflow.ellipsis,
+                            overflow: TextOverflow.fade,
                             textAlign: TextAlign.center,
                             style: TextStyles.heading.copyWith(
                               fontSize: _getTitleFontSize(context),
