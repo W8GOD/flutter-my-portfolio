@@ -10,7 +10,10 @@ class Strings {
   static const String position_detail =
       'Android Developer and Designer from Bangkok, Thailand';
   static const String caption =
-      '“I spent most time building things using this technologies to know about every single thing inside full system”';
+      '“I am a Android Engineer at Amity (HQ). I like to Code and Design. '
+      'I am an enthusiastic and a social person who loves to take up '
+      'new challenges and learn new skills. I love meeting new people, '
+      'exchanging ideas and spreading knowledge and positivity.”';
   static const String summary =
       '      Expert and passionate mobile application developer specializing '
       'in Android, Java, and Kotlin development. Over 4+ years of experience '
