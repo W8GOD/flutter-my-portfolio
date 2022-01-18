@@ -440,7 +440,7 @@ class _AboutPageState extends NavigationActions {
 
   Widget _buildSkillChip(BuildContext context, String label) {
     return Chip(
-      backgroundColor: Colors.transparent,
+      backgroundColor: Color(Colours.color_highlight).withOpacity(0.5),
       label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(

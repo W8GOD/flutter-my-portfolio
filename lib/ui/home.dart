@@ -142,6 +142,7 @@ class _HomePageState extends NavigationActions {
 
   Widget _buildImageProfile(double imageSize) {
     return CircleAvatar(
+      backgroundColor: Colors.transparent,
       radius: ScreenUtil.getInstance().setWidth(imageSize / 2),
       backgroundImage: NetworkImage(Assets.profile),
     );
