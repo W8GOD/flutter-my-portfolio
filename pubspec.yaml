@@ -8,9 +8,9 @@ environment:
   sdk: ">=2.12.0 <3.0.0"
 
 dependencies:
-  google_fonts: ^2.1.0
+  google_fonts: ^2.2.0
   animated_text_kit: ^4.2.1
-  url_launcher: ^6.0.2
+  url_launcher: ^6.0.18
   flutter_html: any
   flutter:
     sdk: flutter
@@ -19,9 +19,9 @@ dev_dependencies:
   flutter_test:
     sdk: flutter
   # Enables the `pub run build_runner` command
-  build_runner: ^1.6.5
+  build_runner: ^2.1.7
   # Includes the JavaScript compilers
-  build_web_compilers: ^2.1.5
+  build_web_compilers: ^3.2.2
   # The Font Awesome Icon pack available as Flutter Icons.
   font_awesome: any
 

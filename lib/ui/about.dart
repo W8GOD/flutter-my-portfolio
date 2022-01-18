@@ -21,22 +21,30 @@ class _AboutPageState extends NavigationActions {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_background),
-      child: Padding(
-        padding: ResponsiveWidget.isSmallScreen(context)
-            ? EdgeInsets.zero
-            : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
-        child: Scaffold(
-          key: _drawerKey,
-          drawerEdgeDragWidth: 0.0,
-          backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context, _drawerKey, PageType.about)
-              as PreferredSizeWidget,
-          drawer: buildDrawer(context, PageType.about),
-          body: LayoutBuilder(builder: (context, constraints) {
-            return _buildBody(context, constraints);
-          }),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              colorFilter: new ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              image: NetworkImage(Assets.background),
+              fit: BoxFit.cover),
+        ),
+        child: Padding(
+          padding: ResponsiveWidget.isSmallScreen(context)
+              ? EdgeInsets.zero
+              : EdgeInsets.symmetric(
+                  horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
+          child: Scaffold(
+            key: _drawerKey,
+            drawerEdgeDragWidth: 0.0,
+            backgroundColor: Colors.transparent,
+            appBar: buildAppBar(context, _drawerKey, PageType.about)
+                as PreferredSizeWidget,
+            drawer: buildDrawer(context, PageType.about),
+            body: LayoutBuilder(builder: (context, constraints) {
+              return _buildBody(context, constraints);
+            }),
+          ),
         ),
       ),
     );
@@ -432,7 +440,7 @@ class _AboutPageState extends NavigationActions {
 
   Widget _buildSkillChip(BuildContext context, String label) {
     return Chip(
-      backgroundColor: Color(Colours.color_highlight).withOpacity(0.5),
+      backgroundColor: Colors.transparent,
       label: SelectableText(
         label,
         style: TextStyles.chip.copyWith(

@@ -214,6 +214,9 @@ abstract class NavigationActions<T extends StatefulWidget> extends State<T> {
   }
 
   void navigateToNextPage(BuildContext context, Widget page) {
-    Navigator.of(context).push(MaterialPageRoute(builder: (context) => page));
+    Navigator.of(context).push(PageRouteBuilder(
+      pageBuilder: (context, animation1, animation2) => page,
+      transitionDuration: Duration.zero,
+    ));
   }
 }

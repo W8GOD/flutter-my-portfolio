@@ -19,6 +19,7 @@ class Assets {
 
   // profile image
   static const String profile = 'assets/images/profile.png';
+  static const String background = 'assets/images/background.png';
 
   // contact images
   static const String medium = 'assets/images/medium.png';

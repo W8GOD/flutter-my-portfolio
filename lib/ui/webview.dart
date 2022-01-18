@@ -17,48 +17,56 @@ class WebViewPage extends StatelessWidget {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_background),
-      child: Padding(
-        padding: ResponsiveWidget.isSmallScreen(context)
-            ? EdgeInsets.zero
-            : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
-        child: Scaffold(
-          key: _drawerKey,
-          backgroundColor: Color(Colours.color_background),
-          drawerEdgeDragWidth: 0.0,
-          appBar: AppBar(
-            leading: _buildLeadingIconButton(context),
-            backgroundColor: Colors.black,
-            centerTitle: true,
-            title: Padding(
-              padding: EdgeInsets.all(8),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                mainAxisSize: MainAxisSize.max,
-                children: [
-                  Text(
-                    title ?? "",
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    style: TextStyles.heading.copyWith(
-                      color: Colors.white,
-                      fontSize:
-                          ResponsiveWidget.isSmallScreen(context) ? 14.0 : 20.0,
-                    ),
-                  )
-                ],
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              colorFilter: new ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              image: NetworkImage(Assets.background),
+              fit: BoxFit.cover),
+        ),
+        child: Padding(
+          padding: ResponsiveWidget.isSmallScreen(context)
+              ? EdgeInsets.zero
+              : EdgeInsets.symmetric(
+                  horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
+          child: Scaffold(
+            key: _drawerKey,
+            drawerEdgeDragWidth: 0.0,
+            appBar: AppBar(
+              leading: _buildLeadingIconButton(context),
+              backgroundColor: Colors.black,
+              centerTitle: true,
+              title: Padding(
+                padding: EdgeInsets.all(8),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(
+                      title ?? "",
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      maxLines: 2,
+                      style: TextStyles.heading.copyWith(
+                        color: Colors.white,
+                        fontSize: ResponsiveWidget.isSmallScreen(context)
+                            ? 14.0
+                            : 20.0,
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          body: Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: SingleChildScrollView(
-                child: Html(
-              data: html,
-            )),
+            body: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: SingleChildScrollView(
+                  child: Html(
+                data: html,
+              )),
+            ),
           ),
         ),
       ),

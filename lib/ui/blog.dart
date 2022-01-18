@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_portfolio/apis/medium.dart';
+import 'package:my_portfolio/constants/assets.dart';
 import 'package:my_portfolio/constants/colours.dart';
 import 'package:my_portfolio/constants/text_styles.dart';
 import 'package:my_portfolio/models/bloglist.dart';
@@ -25,33 +26,41 @@ class _BlogPageState extends NavigationActions<BlogPage> {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_background),
-      child: Padding(
-        padding: ResponsiveWidget.isSmallScreen(context)
-            ? EdgeInsets.zero
-            : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
-        child: Scaffold(
-          key: _drawerKey,
-          drawerEdgeDragWidth: 0.0,
-          backgroundColor: Colors.transparent,
-          drawer: buildDrawer(context, PageType.blog),
-          appBar: buildAppBar(context, _drawerKey, PageType.blog)
-              as PreferredSizeWidget,
-          body: SafeArea(
-            child: FutureBuilder(
-              future: Medium().getAllBlogs(),
-              builder: (context, snapshot) {
-                if (snapshot.hasData) {
-                  return LayoutBuilder(
-                      builder: (context, constraints) =>
-                          _buildBody(context, constraints, snapshot));
-                } else {
-                  return Center(
-                    child: CircularProgressIndicator(),
-                  );
-                }
-              },
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              colorFilter: new ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              image: NetworkImage(Assets.background),
+              fit: BoxFit.cover),
+        ),
+        child: Padding(
+          padding: ResponsiveWidget.isSmallScreen(context)
+              ? EdgeInsets.zero
+              : EdgeInsets.symmetric(
+                  horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
+          child: Scaffold(
+            key: _drawerKey,
+            drawerEdgeDragWidth: 0.0,
+            backgroundColor: Colors.transparent,
+            drawer: buildDrawer(context, PageType.blog),
+            appBar: buildAppBar(context, _drawerKey, PageType.blog)
+                as PreferredSizeWidget,
+            body: SafeArea(
+              child: FutureBuilder(
+                future: Medium().getAllBlogs(),
+                builder: (context, snapshot) {
+                  if (snapshot.hasData) {
+                    return LayoutBuilder(
+                        builder: (context, constraints) =>
+                            _buildBody(context, constraints, snapshot));
+                  } else {
+                    return Center(
+                      child: CircularProgressIndicator(),
+                    );
+                  }
+                },
+              ),
             ),
           ),
         ),
@@ -196,11 +205,13 @@ class _BlogPageState extends NavigationActions<BlogPage> {
   }
 
   void navigateToNextWebViewPage(String? title, String html) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (_) => WebViewPage(
-              title: title,
-              html: html,
-            )));
+    Navigator.of(context).push(PageRouteBuilder(
+      pageBuilder: (context, animation1, animation2) => WebViewPage(
+        title: title,
+        html: html,
+      ),
+      transitionDuration: Duration.zero,
+    ));
   }
 }
 

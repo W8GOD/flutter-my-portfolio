@@ -20,22 +20,30 @@ class _HomePageState extends NavigationActions {
   Widget build(BuildContext context) {
     GlobalKey<ScaffoldState> _drawerKey = GlobalKey();
     return Material(
-      color: Color(Colours.color_background),
-      child: Padding(
-        padding: ResponsiveWidget.isSmallScreen(context)
-            ? EdgeInsets.zero
-            : EdgeInsets.symmetric(
-                horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
-        child: Scaffold(
-          key: _drawerKey,
-          drawerEdgeDragWidth: 0.0,
-          backgroundColor: Colors.transparent,
-          appBar: buildAppBar(context, _drawerKey, PageType.home)
-              as PreferredSizeWidget,
-          drawer: buildDrawer(context, PageType.home),
-          body: LayoutBuilder(builder: (context, constraints) {
-            return _buildBody(context, constraints);
-          }),
+      child: Container(
+        decoration: BoxDecoration(
+          image: DecorationImage(
+              colorFilter: new ColorFilter.mode(
+                  Colors.black.withOpacity(0.2), BlendMode.dstATop),
+              image: NetworkImage(Assets.background),
+              fit: BoxFit.cover),
+        ),
+        child: Padding(
+          padding: ResponsiveWidget.isSmallScreen(context)
+              ? EdgeInsets.zero
+              : EdgeInsets.symmetric(
+                  horizontal: (ScreenUtil.getInstance().setWidth(108.0))),
+          child: Scaffold(
+            key: _drawerKey,
+            drawerEdgeDragWidth: 0.0,
+            backgroundColor: Colors.transparent,
+            appBar: buildAppBar(context, _drawerKey, PageType.home)
+                as PreferredSizeWidget,
+            drawer: buildDrawer(context, PageType.home),
+            body: LayoutBuilder(builder: (context, constraints) {
+              return _buildBody(context, constraints);
+            }),
+          ),
         ),
       ),
     );
@@ -43,10 +51,6 @@ class _HomePageState extends NavigationActions {
 
   Widget _buildBody(BuildContext context, BoxConstraints constraints) {
     return SingleChildScrollView(
-      padding: ResponsiveWidget.isSmallScreen(context)
-          ? EdgeInsets.symmetric(
-              horizontal: (ScreenUtil.getInstance().setWidth(108.0)))
-          : EdgeInsets.zero,
       child: ConstrainedBox(
         constraints: BoxConstraints(
             minWidth: constraints.maxWidth, minHeight: constraints.maxHeight),
@@ -137,9 +141,9 @@ class _HomePageState extends NavigationActions {
   }
 
   Widget _buildImageProfile(double imageSize) {
-    return Image.network(
-      Assets.profile,
-      height: ScreenUtil.getInstance().setWidth(imageSize),
+    return CircleAvatar(
+      radius: ScreenUtil.getInstance().setWidth(imageSize / 2),
+      backgroundImage: NetworkImage(Assets.profile),
     );
   }
 
