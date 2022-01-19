@@ -337,15 +337,11 @@ class _AboutPageState extends NavigationActions {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Row(
-            mainAxisSize: MainAxisSize.max,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              SizedBox(
-                  height: ResponsiveWidget.isSmallScreen(context) ? 20 : 26,
-                  child: Image.network(workExperience.icon))
-            ],
+          Container(
+            padding: EdgeInsets.all(0.0),
+            alignment: Alignment.centerLeft,
+            height: ResponsiveWidget.isSmallScreen(context) ? 20 : 26,
+            child: Image.network(workExperience.icon),
           ),
           SelectableText(
             '${workExperience.post}',
@@ -478,8 +474,10 @@ class _AboutPageState extends NavigationActions {
         'Programmer (Android/iOS)', Assets.ic_geotalent),
     WorkExperience('Nov 2017', 'Jul 2019', 'True Digital Group., Co. Ltd.',
         'Programmer (Android)', Assets.ic_true),
-    WorkExperience('Aug 2019', 'Present', 'Amity Corporation (HQ)',
+    WorkExperience('Aug 2019', 'Nov 2021', 'Amity Corporation (HQ)',
         'Android Engineer', Assets.ic_amity),
+    WorkExperience('Nov 2021', 'Present', 'Central Retail Co, Ltd.',
+        'Android Engineer Specialist', Assets.ic_central),
   ];
 
   final technicalSkills = [

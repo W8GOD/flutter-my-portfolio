@@ -11,6 +11,7 @@ class Assets {
   static const String ic_true = 'assets/icons/ic_true.png';
   static const String ic_amity = 'assets/icons/ic_amity.png';
   static const String ic_geotalent = 'assets/icons/ic_geotalent.png';
+  static const String ic_central = 'assets/icons/ic_central.png';
 
   // social icons
   static const String ic_medium = 'assets/icons/ic_medium.png';
